@@ -43,5 +43,5 @@ print(Average)
 
 
 Number= int(input("Provide the number that you want to create square of: "))
-Square_val= Number^2
+Square_val= Number**2
 print(Square_val)
