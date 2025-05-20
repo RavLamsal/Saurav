@@ -2,6 +2,8 @@ import pygame
 import time
 import random
 import os
+# from tkinter import *
+
 pygame.mixer.init()
 print("Hello!! Welcome to this MP3 Player App or whatever you may call")
 time.sleep(0.2)
@@ -29,6 +31,7 @@ def play_audio(file_name):
     pygame.mixer.music.load(full_path)
     pygame.mixer.music.play()
     print(f"Now playing: {file_name}")
+
 currentIndex=0
 def playByIndex(index):
     # currentIndex=0
@@ -67,7 +70,12 @@ while True:
         if currentIndex<len(songs)-1:
             playByIndex(currentIndex-1)
         else:
-            pass
+            print("No song get lost")
+    elif command=="loops":
+        
+            pygame.mixer.music.play(loops=-1)
+            print("now this song will play in loop")
+        
 
     elif command=="exit":
         print("I quit!!! ")
