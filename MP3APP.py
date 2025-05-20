@@ -9,11 +9,14 @@ print("This App works by command, and not by GUI... as i am new and dont know an
 time.sleep(0.2)
 print("Lets get Started...")
 print('COMMANDS')
+print("---------------------")
 print('1. "play" for playing audio' )
 print('2. "pause" for Pausing audio')
 print('3. "shuffle" for shuffling audio and playing random audio')
 print('4. "resume" for playing audio' )
 print('5. "exit" for exiting audio' )
+print('6. "next" for next song')
+print('7. "back" for previous song')
 # command=input("Enter your command: ")
 musics= "C:\\Users\Saurabh\OneDrive\Desktop\PythonTests\MP3Player\musics"
 songs=[]
@@ -26,6 +29,13 @@ def play_audio(file_name):
     pygame.mixer.music.load(full_path)
     pygame.mixer.music.play()
     print(f"Now playing: {file_name}")
+currentIndex=0
+def playByIndex(index):
+    # currentIndex=0
+    global currentIndex
+    currentIndex=index
+    play_audio(songs[currentIndex])
+
 # till here
 while True:
     command=input("Enter your command: ").lower()
@@ -48,6 +58,16 @@ while True:
     elif command=="resume":
         pygame.mixer.music.unpause()
         print("COntinued")
+    elif command=="next":
+        if currentIndex<len(songs)-1:
+            playByIndex(currentIndex+1)
+        else:
+            print("WTF!!")
+    elif command=="back":
+        if currentIndex<len(songs)-1:
+            playByIndex(currentIndex-1)
+        else:
+            pass
 
     elif command=="exit":
         print("I quit!!! ")
